@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Normal Cars</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #111;
+      color: #fff;
+      padding: 20px;
+    }
+
+    h1 {
+      color: cyan;
+      text-align: center;
+    }
+
+    .car-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+      margin-top: 30px;
+    }
+
+    .car-card {
+      background: #222;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 0 10px cyan;
+      transition: transform 0.3s ease;
+    }
+
+    .car-card:hover {
+      transform: scale(1.03);
+    }
+
+    .car-card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+    }
+
+    .car-info {
+      padding: 15px;
+    }
+
+    .car-info h3 {
+      margin: 0;
+      color: #fff;
+    }
+
+    .car-info p {
+      color: #aaa;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Normal Cars</h1>
+  <div class="car-grid">
+    <div class="car-card">
+      <img src="assets/normal1.jpg" alt="Normal Car 1" />
+      <div class="car-info">
+        <h3>Honda Civic</h3>
+        <p>Reliable · Fuel Efficient · Daily Driver</p>
+      </div>
+    </div>
+    <div class="car-card">
+      <img src="assets/normal2.jpg" alt="Normal Car 2" />
+      <div class="car-info">
+        <h3>Hyundai Elantra</h3>
+        <p>Modern Sedan · Smart Features</p>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>HYDERS CARZ - FAQ</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #111;
+      color: #fff;
+    }
+
+    .faq-section {
+      background: url('faqscars.jpg') center/cover no-repeat;
+      position: relative;
+      padding: 80px 20px;
+    }
+
+    .faq-section::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.7);
+      z-index: 1;
+    }
+
+    .faq-container {
+      position: relative;
+      z-index: 2;
+      max-width: 800px;
+      margin: auto;
+    }
+
+    .faq-heading {
+      text-align: center;
+      font-size: 36px;
+      font-weight: bold;
+      margin-bottom: 40px;
+      animation: fadeIn 1s ease-in-out;
+    }
+
+    .faq-card {
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 16px;
+      padding: 20px 24px;
+      margin-bottom: 20px;
+      transition: 0.4s;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(8px);
+      cursor: pointer;
+    }
+
+    .faq-card:hover {
+      box-shadow: 0 0 15px #ff0f5b;
+      background-color: rgba(255, 255, 255, 0.1);
+    }
+
+    .faq-question {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 20px;
+    }
+
+    .faq-question img {
+      width: 24px;
+      height: 24px;
+      margin-right: 10px;
+    }
+
+    .faq-answer {
+      margin-top: 12px;
+      font-size: 16px;
+      line-height: 1.5;
+      display: none;
+      color: #ddd;
+    }
+
+    .faq-icon {
+      transition: transform 0.3s;
+    }
+
+    .faq-card.open .faq-answer {
+      display: block;
+    }
+
+    .faq-card.open .faq-icon {
+      transform: rotate(180deg);
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 600px) {
+      .faq-heading {
+        font-size: 28px;
+      }
+      .faq-question {
+        font-size: 18px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <section class="faq-section">
+    <div class="faq-container">
+      <h2 class="faq-heading">Frequently Asked Questions</h2>
+
+      <!-- FAQ Card 1 -->
+      <div class="faq-card" onclick="toggleFaq(this)">
+        <div class="faq-question">
+          <div><img src="https://cdn-icons-png.flaticon.com/512/633/633652.png" alt="icon" /> Can I schedule a test drive?</div>
+          <div class="faq-icon">▼</div>
+        </div>
+        <div class="faq-answer">Yes! You can schedule a test drive directly from the car’s detail page by clicking the "Test Drive" button.</div>
+      </div>
+
+      <!-- FAQ Card 2 -->
+      <div class="faq-card" onclick="toggleFaq(this)">
+        <div class="faq-question">
+          <div><img src="https://cdn-icons-png.flaticon.com/512/3468/3468434.png" alt="icon" /> What financing options are available?</div>
+          <div class="faq-icon">▼</div>
+        </div>
+        <div class="faq-answer">We offer flexible EMI plans, zero-down-payment offers, and bank tie-ups with special interest rates.</div>
+      </div>
+
+      <!-- FAQ Card 3 -->
+      <div class="faq-card" onclick="toggleFaq(this)">
+        <div class="faq-question">
+          <div><img src="https://cdn-icons-png.flaticon.com/512/190/190411.png" alt="icon" /> Are your cars brand new or pre-owned?</div>
+          <div class="faq-icon">▼</div>
+        </div>
+        <div class="faq-answer">We sell both brand-new and certified pre-owned cars with full inspection reports and warranty.</div>
+      </div>
+
+      <!-- FAQ Card 4 -->
+      <div class="faq-card" onclick="toggleFaq(this)">
+        <div class="faq-question">
+          <div><img src="https://cdn-icons-png.flaticon.com/512/3208/3208750.png" alt="icon" /> How do I add a car to favorites?</div>
+          <div class="faq-icon">▼</div>
+        </div>
+        <div class="faq-answer">Just click on the ❤️ icon on the car card. All favorites will be saved and accessible in your profile.</div>
+      </div>
+
+    </div>
+  </section>
+
+  <script>
+    function toggleFaq(card) {
+      const allFaqs = document.querySelectorAll('.faq-card');
+      allFaqs.forEach(faq => {
+        if (faq !== card) faq.classList.remove('open');
+      });
+      card.classList.toggle('open');
+    }
+  </script>
+
+</body>
+</html>

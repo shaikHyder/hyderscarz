@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sell Your Car</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Roboto', sans-serif;
+      background: url('https://images.unsplash.com/photo-1571607388263-74cd7c790a10?auto=format&fit=crop&w=1950&q=80') no-repeat center center/cover;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    .overlay {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background-color: rgba(0, 0, 0, 0.75);
+      z-index: 0;
+    }
+
+    .container {
+      position: relative;
+      z-index: 2;
+      background: #111;
+      color: #fff;
+      padding: 40px 30px;
+      border-radius: 15px;
+      max-width: 600px;
+      width: 90%;
+      box-shadow: 0 0 20px rgba(255, 255, 0, 0.4);
+      animation: slideUp 1s ease;
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 2.4rem;
+      color: yellow;
+      margin-bottom: 25px;
+    }
+
+    label {
+      display: block;
+      margin-top: 15px;
+      margin-bottom: 6px;
+      font-weight: 500;
+      font-size: 1rem;
+      color: white;
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 12px;
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+      margin-bottom: 12px;
+      color: white;
+      background-color: #222;
+    }
+
+    input::placeholder, textarea::placeholder {
+      color: #ccc;
+    }
+
+    input[type="file"] {
+      padding: 6px;
+      background-color: #fff;
+    }
+
+    #preview {
+      width: 100%;
+      margin-top: 10px;
+      border-radius: 10px;
+      display: none;
+      max-height: 200px;
+      object-fit: cover;
+      border: 2px solid yellow;
+    }
+
+    button {
+      width: 100%;
+      background: yellow;
+      color: black;
+      font-size: 1.1rem;
+      padding: 12px;
+      border: none;
+      border-radius: 8px;
+      margin-top: 20px;
+      cursor: pointer;
+      transition: 0.3s ease;
+      font-weight: bold;
+    }
+
+    button:hover {
+      background-color: #ffd700;
+    }
+
+    @keyframes slideUp {
+      from { opacity: 0; transform: translateY(50px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .success-message {
+      display: none;
+      margin-top: 15px;
+      padding: 10px;
+      background: yellow;
+      color: black;
+      text-align: center;
+      border-radius: 6px;
+      font-weight: bold;
+    }
+
+    @media (max-width: 600px) {
+      h1 { font-size: 1.8rem; }
+      .container { padding: 25px 20px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="overlay"></div>
+  <form class="container" id="sellCarForm">
+    <h1>Sell Your Car</h1>
+
+    <label for="name">Your Name</label>
+    <input type="text" id="name" placeholder="John Doe" required>
+
+    <label for="model">Car Make & Model</label>
+    <input type="text" id="model" placeholder="Ferrari F8 Tributo" required>
+
+    <label for="year">Year of Manufacture</label>
+    <input type="number" id="year" placeholder="2023" required>
+
+    <label for="price">Expected Price (₹)</label>
+    <input type="number" id="price" placeholder="9500000" required>
+
+    <label for="description">Car Description</label>
+    <textarea id="description" rows="4" placeholder="Condition, mileage, modifications..."></textarea>
+
+    <label for="photo">Upload Car Photo</label>
+    <input type="file" id="photo" accept="image/*" onchange="previewImage(event)">
+    <img id="preview" alt="Car Image Preview">
+
+    <button type="submit">Submit for Evaluation</button>
+    <div class="success-message" id="successMsg">✅ Submission Received!</div>
+  </form>
+
+  <script>
+    function previewImage(event) {
+      const file = event.target.files[0];
+      const preview = document.getElementById('preview');
+      if (file) {
+        preview.src = URL.createObjectURL(file);
+        preview.style.display = 'block';
+      } else {
+        preview.style.display = 'none';
+      }
+    }
+
+    document.getElementById('sellCarForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const msg = document.getElementById('successMsg');
+      msg.style.display = 'block';
+      setTimeout(() => {
+        msg.style.display = 'none';
+        document.getElementById('sellCarForm').reset();
+        document.getElementById('preview').style.display = 'none';
+      }, 3000);
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Car Comparison</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #0f0f0f;
+      color: #f0f0f0;
+      margin: 0;
+      padding: 40px 20px;
+    }
+    h1 {
+      text-align: center;
+      font-size: 2.8em;
+      color: #00e6e6;
+      margin-bottom: 30px;
+    }
+    .compare-container {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+      margin-bottom: 40px;
+    }
+    .car-select {
+      flex: 1;
+      min-width: 220px;
+    }
+    label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: bold;
+      color: #1fe05c;
+    }
+    select {
+      width: 100%;
+      padding: 10px;
+      background: #222;
+      color: #fff;
+      border: 1px solid #333;
+      border-radius: 8px;
+      font-size: 16px;
+    }
+    .comparison {
+      background: #1c1c1c;
+      border-radius: 15px;
+      padding: 25px;
+      max-width: 1000px;
+      margin: 0 auto;
+      overflow-x: auto;
+      box-shadow: 0 0 12px rgba(0, 255, 204, 0.3);
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 700px;
+    }
+    th, td {
+      padding: 14px;
+      text-align: center;
+      border-bottom: 1px solid #333;
+    }
+    th {
+      background: #252525;
+      color: #00c3ff;
+      font-size: 1.1em;
+    }
+    td {
+      color: #ccc;
+      font-weight: 500;
+    }
+    td:first-child {
+      text-align: left;
+      font-weight: bold;
+      color: #f7b731;
+    }
+    @media (max-width: 768px) {
+      .compare-container {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<h1>Car Comparison Tool</h1>
+
+<div class="compare-container">
+  <div class="car-select">
+    <label for="car1">Select Car 1:</label>
+    <select id="car1">
+      <option value="ferrari812">Ferrari 812</option>
+      <option value="lambo">Lamborghini Aventador</option>
+      <option value="audi">Audi R8</option>
+      <option value="tesla">Tesla Model S</option>
+      <option value="bugatti">Bugatti Chiron</option>
+      <option value="porsche">Porsche 911</option>
+      <option value="bmw">BMW i8</option>
+      <option value="sf90">Ferrari SF90</option>
+    </select>
+  </div>
+  <div class="car-select">
+    <label for="car2">Select Car 2:</label>
+    <select id="car2">
+      <option value="lambo">Lamborghini Aventador</option>
+      <option value="ferrari812">Ferrari 812</option>
+      <option value="audi">Audi R8</option>
+      <option value="tesla">Tesla Model S</option>
+      <option value="bugatti">Bugatti Chiron</option>
+      <option value="porsche">Porsche 911</option>
+      <option value="bmw">BMW i8</option>
+      <option value="sf90">Ferrari SF90</option>
+    </select>
+  </div>
+  <div class="car-select">
+    <label for="car3">Select Car 3:</label>
+    <select id="car3">
+      <option value="">-- None --</option>
+      <option value="lambo">Lamborghini Aventador</option>
+      <option value="ferrari812">Ferrari 812</option>
+      <option value="audi">Audi R8</option>
+      <option value="tesla">Tesla Model S</option>
+      <option value="bugatti">Bugatti Chiron</option>
+      <option value="porsche">Porsche 911</option>
+      <option value="bmw">BMW i8</option>
+      <option value="sf90">Ferrari SF90</option>
+    </select>
+  </div>
+  <div class="car-select">
+    <label for="car4">Select Car 4:</label>
+    <select id="car4">
+      <option value="">-- None --</option>
+      <option value="lambo">Lamborghini Aventador</option>
+      <option value="ferrari812">Ferrari 812</option>
+      <option value="audi">Audi R8</option>
+      <option value="tesla">Tesla Model S</option>
+      <option value="bugatti">Bugatti Chiron</option>
+      <option value="porsche">Porsche 911</option>
+      <option value="bmw">BMW i8</option>
+      <option value="sf90">Ferrari SF90</option>
+    </select>
+  </div>
+</div>
+
+<div class="comparison">
+  <table>
+    <thead>
+      <tr>
+        <th>Feature</th>
+        <th id="car1-name">Ferrari 812</th>
+        <th id="car2-name">Lamborghini Aventador</th>
+        <th id="car3-name"></th>
+        <th id="car4-name"></th>
+      </tr>
+    </thead>
+    <tbody id="compare-body"></tbody>
+  </table>
+</div>
+
+<script>
+  const carData = {
+    ferrari812: { name: "Ferrari 812", price: "$340,000", engine: "6.5L V12", mileage: "12 mpg", fuel: "Petrol", transmission: "7-Speed Dual Clutch" },
+    lambo: { name: "Lamborghini Aventador", price: "$393,000", engine: "6.5L V12", mileage: "10 mpg", fuel: "Petrol", transmission: "7-Speed ISR" },
+    audi: { name: "Audi R8", price: "$160,000", engine: "5.2L V10", mileage: "14 mpg", fuel: "Petrol", transmission: "7-Speed S tronic" },
+    tesla: { name: "Tesla Model S", price: "$89,000", engine: "Electric", mileage: "396 miles range", fuel: "Electric", transmission: "1-Speed Fixed Gear" },
+    bugatti: { name: "Bugatti Chiron", price: "$3,000,000", engine: "8.0L Quad-Turbo W16", mileage: "9 mpg", fuel: "Petrol", transmission: "7-Speed DSG" },
+    porsche: { name: "Porsche 911", price: "$120,000", engine: "3.0L Twin-Turbo Flat-6", mileage: "18 mpg", fuel: "Petrol", transmission: "8-Speed PDK" },
+    bmw: { name: "BMW i8", price: "$150,000", engine: "1.5L Hybrid Turbo", mileage: "69 MPGe", fuel: "Hybrid", transmission: "6-Speed Auto" },
+    sf90: { name: "Ferrari SF90", price: "$510,000", engine: "4.0L V8 Plug-in Hybrid", mileage: "51 MPGe", fuel: "Hybrid", transmission: "8-Speed DCT" }
+  };
+
+  const selects = ["car1", "car2", "car3", "car4"];
+  const updateComparison = () => {
+    const selectedCars = selects.map(id => document.getElementById(id).value).filter(Boolean);
+    const carNames = selects.map((id, i) => {
+      const car = carData[document.getElementById(id).value];
+      document.getElementById(`car${i + 1}-name`).textContent = car ? car.name : "";
+      return car;
+    });
+
+    const rows = ["Price", "Engine", "Mileage", "Fuel Type", "Transmission"];
+    const keys = ["price", "engine", "mileage", "fuel", "transmission"];
+    const body = rows.map((row, i) => {
+      const cells = carNames.map(car => `<td>${car ? car[keys[i]] : ""}</td>`).join("");
+      return `<tr><td>${row}</td>${cells}</tr>`;
+    }).join("");
+
+    document.getElementById("compare-body").innerHTML = body;
+  };
+
+  selects.forEach(id => document.getElementById(id).addEventListener("change", updateComparison));
+  updateComparison(); // Initial load
+</script>
+
+</body>
+</html>
